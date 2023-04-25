@@ -1,0 +1,16 @@
+
+
+
+.meme-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 2em;
+}
+
+.meme-img:hover {
+    border: 3px solid white ;
+}
+
+.img-description{
+    color: var(--clr4);
+}

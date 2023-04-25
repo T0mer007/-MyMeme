@@ -1,0 +1,16 @@
+
+
+@font-face {
+    font-family: noto;
+    src: url('../fonts/noto/NotoSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: oswald;
+    src: url('../fonts/oswald/Oswald.ttf');
+}
+
+@font-face {
+    font-family: lobster;
+    src: url('../fonts/lobster/Lobster-Regular.ttf');
+}

@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'oswald', monospace;
+    line-height: 1.742857;
+}
+
+body {
+    margin: 0;
+    font-size: 0.875rem;
+    background-color: #e3e2e2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    margin: 0 0 1em;
+}
+h1{
+    font-size: 2.5em;
+    font-weight: 800;
+}
+h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--clr3);
+}
+
+img {
+    width: 100%;
+}
