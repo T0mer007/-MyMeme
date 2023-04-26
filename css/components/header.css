@@ -1,9 +1,9 @@
 header {
     grid-column: 1/-1;
+    grid-row: 1;
     height: 130px;
     background-color: var(--clr5);
     color: var(--clr2);
     text-align: center;
 }
-
 

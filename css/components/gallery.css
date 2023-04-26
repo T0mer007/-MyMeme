@@ -10,7 +10,23 @@
 .meme-img:hover {
     border: 3px solid white ;
 }
+.meme-img.small{
+    width: 100px;
+    height: 100px;
+}
 
 .img-description{
     color: var(--clr4);
+}
+
+.delete-saved{
+    position: relative;
+    background-color: #ffffff0a;
+    border-radius: 50% ;
+    border: 1px solid rgb(131, 131, 131);
+    z-index: 3;
+}
+
+.delete-saved:hover{
+    cursor: pointer;
 }

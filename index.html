@@ -17,69 +17,19 @@
     </header>
 
     <section class="editor flex">
-        <div class="canvas-contariner">
-            <canvas class="my-canvas" width="500" height="500"></canvas>
-        </div>
-        <section class="control-section">
-            <h2 class="control-title">Controls</h2>
-            <div class="form-group">
-                <div class="input-group mb-3">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile02"
-                            onchange="onFileInputChange(event)">
-                        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                    </div>
-                </div>
-            </div>
-            <div class="control-tools">
 
-
-
-
-       <div class="control-text">
-           <button class="line-delete" onclick="onDeleteText()"><i class="fas trash fa-trash-alt"></i></button>
-
-           <input class="text-input" type="text" placeholder="${txt.line}" oninput="onChageTxt(value)" />
-
-           <i class="fas fa-text-height"></i> 
-           
-           <input type="range" value="${txt.size}" min="10" step="2" oninput="onChangeSize(value)">
-           
-           <i class="fas fa-font"></i>:
-           <input type="color" class="color-input" value="${txt.color}" oninput="onChangeColor(value)">
-
-
-           <select oninput="onChangeFont(value)">
-               <option style="font-family: Impact;" value="${txt.fontFamily}">${txt.fontFamily}</option>
-               <option style="font-family: Tahoma;" value="Tahoma">Tahoma</option>
-               <option style="font-family: lobster;" value="lobster">Lobster</option>
-               <option value="Verdana">Verdana</option>
-           </select>
-
-           <i class="fas fa-arrows-alt-h"></i>
-            <input type="number" class="left-right-input" value="${txt.x}" min="0" step="5" oninput="">
-           
-            <i class="fas fa-arrows-alt-v"></i> <input type="number" class="left-right-input" value="${txt.y}" min="0" step="5" oninput="">
-           
-            <select oninput="onChangeAlign(value)">
-               <option value="left">left</option>
-               <option value="center">center</option>
-               <option value="right">right</option>
-            </select>
-      
-        </div>
-
-    
-
-            </div>
-            
         </section>
-        
+        <!-- Editor Render Here -->
 
     </section>
 
+    <section class="savedMemes">
+        <!-- Saved Memes Render Here -->
+    </section>
+
+
     <section class="gallery">
-        
+        <!-- Image Render Here -->
     </section>
 
 

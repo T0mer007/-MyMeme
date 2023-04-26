@@ -2,7 +2,8 @@
 
 let gImgs
 let gId = 1
-let gKeywordSearchCountMap = {'Happy': 5,'Cat': 2, 'Baby': 2}
+let gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
+
 
 
 
@@ -43,3 +44,11 @@ function createImg(url, keyword, description) {
 function getImages() {
     return gImgs
 }
+
+// function getImgById(id) {
+//     let imgIdx = gImgs.find(img =>{
+//         return img.id === id
+//     });
+//     console.log(imgIdx)
+//     saveToStorage('img', imgIdx)
+// }

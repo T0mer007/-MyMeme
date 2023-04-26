@@ -1,0 +1,56 @@
+/* MOBILE FIRST */
+
+
+@media (max-width: 700px) {
+
+    :root {
+        --layout-padding: 0px;
+    }
+
+    .editor {
+        flex-direction: column;
+        align-items: start;
+        padding: 0 ;
+        width:300px ;
+       
+    }
+    .control-section {
+        width: 90vw;
+        padding: 20%;
+    }
+    .canvas-container {
+        width: 90vw;
+    }
+  
+    .transform-control {
+        transform: translate(0, -800px);
+        z-index: -1;
+        opacity: 0;
+    }
+}
+
+@media (min-width: 700px) {
+    :root {
+        --layout-padding: 60px;
+    }
+
+}
+
+@media (min-width: 960px) {
+    :root {
+        --layout-padding: 130px;
+    }
+
+}
+
+@media (min-width: 1260px) {
+    :root {
+        --layout-padding: 260px;
+    }
+
+    .editor{
+        display: flex;
+        justify-content: space-around;
+    }
+
+}
