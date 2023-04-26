@@ -7,13 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/18eee0c7a5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
-    <title>#MyMeme</title>
+    <title data-trans="title">#MyMeme</title>
 </head>
 
 <body class="main-layout" onload="onInit()">
     <header>
-        <h1>#MyMeme</h1>
-        <h2>Choose an image:</h2>
+        <h1 data-trans="title">#MyMeme</h1>
+        <select name="lang" onchange="onSetLang(value)" class="lang">
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+            <option value="he">HE</option>
+        </select>
+        <h2 data-trans="head-line">Choose an image:</h2>
     </header>
 
     <section class="editor flex">
@@ -35,12 +40,13 @@
 
 
     <footer>
-        <p class="footer-copyright">© tomer benaim</p>
+        <p data-trans="copyrights" class="footer-copyright">© tomer benaim</p>
     </footer>
 
 
 
     <script src="js/utils.js"></script>
+    <script src="js/services/i18n.service.js"></script>
     <script src="js/services/storage-service.js"></script>
     <script src="js/services/gallery-srvice.js"></script>
     <script src="js/services/meme-service.js"></script>

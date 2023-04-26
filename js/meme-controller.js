@@ -7,23 +7,23 @@ let gStartPos
 
 
 function renderEditor() {
-    document.querySelector('header h2').innerText = 'Style & share'
-const meme = getMeme()
-const currLine = meme.lines[meme.selectedLineIdx]
+    document.querySelector('header h2').innerHTML = `<span data-trans="style">Style & share</span>`
+    const meme = getMeme()
+    const currLine = meme.lines[meme.selectedLineIdx]
 
 
-        let strHtmls = `
+    let strHtmls = `
         <div class="canvas-container">
             <canvas class="my-canvas" width="500" height="500"></canvas>
         </div>
         <section class="control-section">
-            <h2 class="control-title">Controls</h2>
+            <h2 class="control-title" data-trans="controls">Controls</h2>
             <div class="form-group">
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile02"
-                            onchange="onFileInputChange(event)">
-                        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                        <input type="file" class="custom-file-input" id="upload"
+                            onchange="onImgInput(event)">
+                        <label class="upload-btn" for="upload"></label>
                     </div>
                 </div>
             </div>
@@ -46,14 +46,14 @@ const currLine = meme.lines[meme.selectedLineIdx]
 
 
                     <select oninput="onChangeFont(value)">
-                        <option style="font-family: Impact;" value="${currLine.fontFamily}">
+                        <option data-trans="font" style="font-family: Impact;" value="${currLine.fontFamily}">
                             Font</option>
                         <option style="font-family: Tahoma;" value="Tahoma">Tahoma</option>
                         <option style="font-family: lobster;" value="lobster">Lobster</option>
                         <option value="Verdana">Verdana</option>
                     </select>
 
-                    <button class="switch-line" onclick="onSwitchLine()">switch-line</button>
+                    <button class="switch-line" data-trans="switch-line" onclick="onSwitchLine()">switch-line</button>
 
                     <i class="fas fa-arrows-alt-h"></i>
                     <input type="number" class="left-right-input" value="${currLine.pos.x}" min="0" step="5"
@@ -63,9 +63,9 @@ const currLine = meme.lines[meme.selectedLineIdx]
                         min="0" step="5" oninput="onChangeY(value)">
 
                     <select oninput="onChangeAlign(value)">
-                        <option value="left">left</option>
-                        <option value="center">center</option>
-                        <option value="right">right</option>
+                        <option data-trans="left" value="left">left</option>
+                        <option data-trans="center" value="center">center</option>
+                        <option data-trans="right" value="right">right</option>
                     </select>
 
                 </div>
@@ -83,18 +83,15 @@ const currLine = meme.lines[meme.selectedLineIdx]
                 <button data-emoji="sleep" onclick="onAddEmoji(this)" class="btn">😴</button>
             </div>
 
-            <button class="btn" onclick="onAddNewLine()">Add New Line <i class="fas fa-grip-lines"></i></button>
+            <button class="btn" data-trans="add-line" onclick="onAddNewLine()">Add New Line <i class="fas fa-grip-lines"></i></button>
 
-            <button class="btn" onclick="onFlexible()">I'm flexible</button>
+            <button class="btn"  data-trans="flexible" onclick="onFlexible()">I'm flexible</button>
 
-            <button class="btn" onclick="onSaveMeme()">Save Meme </button>
+            <button class="btn" data-trans="save" onclick="onSaveMeme()">Save Meme </button>
 
-            <button class="btn" onclick="onDownloadImg()">Download Image <i
-                    class="fas fa-cloud-download-alt"></i></button>
+            <a class="btn" data-trans="download" onclick="onDownloadImg(this)" href="" >Download Image<i class="fas fa-cloud-download-alt"></i> </a>
 
-            <button class="btn fb-share-btn" type="submit">Share on Facebook <i
-                    class="fab fa-facebook-square"></i></button>
-
+            <button class="btn fb-share-btn" data-trans="share" onclick="onUploadImg()" type="submit">Share on Facebook <i class="fab fa-facebook-square"></i></button>
         `
     document.querySelector('.editor').innerHTML = strHtmls
     // renderControls()
@@ -108,7 +105,6 @@ function renderMeme() {
     addListeners()
 }
 
-//Render set's of control each linef
 function renderControls() {
     let memes = getMeme()
     let strHtml = memes.txts.map(() => {
@@ -121,10 +117,9 @@ function renderControls() {
 }
 
 function loadImg() {
-    let ImgIdx = loadFromStorage('imgIdx')
     gImg = new Image()
-    if (!ImgIdx) gImg.src = `imgs/${gMeme.selectedImgId}.jpg`
-    else gImg.src = 'imgs/3.jpg'
+    if (!gUploadSrc) gImg.src = `imgs/${gMeme.selectedImgId}.jpg`
+    else gImg.src = gUploadSrc
 }
 
 
@@ -142,9 +137,10 @@ function drawCanvas() {
 }
 
 function markSelected() {
-    for (let i = 0; i < gMeme.lines.length; i++) {
-        let line = gMeme.lines[i]
-        if (i === gMeme.selectedLineIdx) {
+    let meme = getMeme()
+    for (let i = 0; i < meme.lines.length; i++) {
+        let line = meme.lines[i]
+        if (i === meme.selectedLineIdx) {
             gCtx.strokeRect(line.pos.x - 5, line.pos.y - line.size * 1.4, line.size * 10, line.size * 2)
         }
     }
@@ -217,40 +213,6 @@ function onAddNewLine() {
     drawCanvas()
 }
 
-function onControlOpen() {
-    document.querySelector('.control-section').classList.toggle('transform-control')
-}
-
-
-//Get Picture from computer
-function renderCanvasImg(img) {
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-}
-
-function onImgInput(ev) {
-    loadImageFromInput(ev, renderImg)
-}
-
-function loadImageFromInput(ev, onImageReady) {
-    const reader = new FileReader()
-    reader.onload = function (event) {
-        let img = new Image()
-        img.src = event.target.result
-        img.onload = () => onImageReady(img)
-    }
-    reader.readAsDataURL(ev.target.files[0])
-}
-
-//Download canvas as .jpg
-
-function onDownloadCanvas(elLink) {
-    const data = gElCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'my-img.jpg'
-}
-
-
-
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
@@ -320,14 +282,22 @@ function onLoadSavedMeme(idx) {
     renderMeme()
 }
 
-function onDeleteSavedMeme(idx){
+function onDeleteSavedMeme(idx) {
     deleteSavedMeme(idx)
     renderSavedMemes()
 }
 
-function onAddEmoji(elEmoji){
-console.log(elEmoji.dataset.emoji)
-let emojiName = elEmoji.dataset.emoji
-addNewEmoji(emojiName)
-drawCanvas()
+function onAddEmoji(elEmoji) {
+    console.log(elEmoji.dataset.emoji)
+    let emojiName = elEmoji.dataset.emoji
+    addNewEmoji(emojiName)
+    drawCanvas()
 }
+
+function onSetLang(lang) {
+    setLang(lang)
+    if (lang === 'he') document.body.classList.add('rtl')
+    else document.body.classList.remove('rtl')
+    doTrans()
+}
+

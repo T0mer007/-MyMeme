@@ -1,6 +1,8 @@
 'use strict'
 
 
+
+
 function onInit() {
     createImgs()
     renderGallery()

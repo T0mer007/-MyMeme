@@ -25,37 +25,12 @@
     height: 50px;
 }
 
-.github-btn {
-    margin: 25px auto 0;
-    background-color: #272b30;
-    width: 138px;
-    border: 1px solid #FFF;
-    border-radius: 5px;
-    padding: 4px;
-}
 
-.github-btn:hover {
-    background-color: #fff;
-}
-
-.github {
-    width: 160px;
-}
-
-.github:hover {
-    text-decoration: none;
-    color: #000;
-}
-
-.gallery-link {
-    margin: 20px 0 0;
-    text-align: center;
-}
 
 .control-section h2 {
     text-align: center;
     color: var(--clr2);
-
+    
 }
 
 [type="file"] {
@@ -64,7 +39,7 @@
     width: 0;
 }
 
-.file {
+.upload-btn {
     color: #FFFFFF;
     border: 0.1em solid #FFFFFF;
     border-radius: 5px;
@@ -79,21 +54,12 @@
     transition: all 0.3s;
 }
 
-.file:hover {
-    color: #000000;
-    background-color: #FFFFFF;
-    border: #fff 1px solid;
+.upload-btn:hover {
+    background-color: #f0f0f039;
 }
 
-.file::after {
+.upload-btn::after {
     content: 'Upload Image ⇑';
-}
-
-.save-img:hover {
-    cursor: pointer;
-    color: #000000;
-    background-color: #FFFFFF;
-    border: #fff 1px solid;
 }
 
 .left-right-input {

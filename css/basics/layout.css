@@ -7,7 +7,7 @@
     justify-content: center;
     grid-template-columns: var(--layout-padding) minmax(300px,1fr) var(--layout-padding);
     grid-template-rows: 130px 1fr auto;
-    /* gap: 20px; */
+    gap: 20px;
     min-width: 420px;
     margin: 0;
 }
@@ -20,7 +20,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-   
+   /* justify-content: space-around; */
+   padding: 5%;
    min-height: 650px;
 }
 
@@ -57,4 +58,10 @@
     flex-wrap: wrap;
     justify-content: center;
     gap:15px
+}
+
+/* HEBREW */
+
+.rtl{
+    direction: rtl;
 }
