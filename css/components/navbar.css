@@ -10,7 +10,6 @@
 
 .lang{
     font-weight: 600;
-    /* grid-row: 3; */
     grid-column: 2;
     /* justify-self: end; */
     /* margin-inline-end:30px ; */
@@ -109,3 +108,4 @@ input[type=text]:focus {
     cursor: pointer;
     border-radius: 1em;
 }
+

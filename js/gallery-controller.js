@@ -139,3 +139,7 @@ function onGallery(){
     document.querySelector('.about-modal').style.display = 'none'
     document.querySelector('.gallery').style.display = 'flex'
 }
+
+function onOpenMenu() {
+    document.querySelector('body').classList.toggle('open-menu')
+}
