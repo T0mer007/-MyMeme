@@ -18,12 +18,7 @@ function renderEditor() {
         </div>
         <section class="control-section">
             <h2 class="control-title" data-trans="controls">Controls</h2>
-            
-            
-                            
-            
-            
-            
+          
             <div class="control-text">
             
             <button class="line-delete" onclick="onDeleteText()"><i class="fas trash fa-trash-alt"></i></button>
@@ -41,7 +36,7 @@ function renderEditor() {
                             
                             <select oninput="onChangeFont(value)">
                             <option data-trans="font" style="font-family: Impact;" value="${currLine.fontFamily}">
-                            Font</option>
+                            Impact</option>
                             <option style="font-family: Tahoma;" value="Tahoma">Tahoma</option>
                             <option style="font-family: lobster;" value="lobster">Lobster</option>
                             <option value="Verdana">Verdana</option>
@@ -64,14 +59,7 @@ function renderEditor() {
                             
                             </div>
                             </div>
-                        
-                        
-                        
-                            
-                            
-                            
-                            
-                            
+                                                
                             <div class="emoji">
                             <button class="btn emoji-btn" data-emoji="heart" onclick="onAddEmoji(this)">💘</button>
                             <button data-emoji="angel" onclick="onAddEmoji(this)" class="btn emoji-btn">😇</button>
@@ -85,7 +73,7 @@ function renderEditor() {
                             <div class="tools-section share-section">
                         <input type="file" class="custom-file-input" id="upload"
                          onchange="onImgInput(event)">
-                        <label class="upload-btn share-btn btn" for="upload"></label>
+                        <label class="upload-btn share-btn btn" for="upload">Upload Image ⇑</label>
                         <button class="btn share-btn" data-trans="save" onclick="onSaveMeme()">Save Meme <i class="fa-regular fa-floppy-disk"></i></button>
                         <a class="btn share-btn" data-trans="download" onclick="onDownloadImg(this)" href="" >Download <i class="fas fa-cloud-download-alt"></i> </a>
                         <button class="btn  share-btn" data-trans="share" onclick="onUploadImg()" type="submit">Share <i class="fab fa-facebook-square"></i></button>
@@ -139,8 +127,10 @@ function markSelected() {
     let meme = getMeme()
     for (let i = 0; i < meme.lines.length; i++) {
         let line = meme.lines[i]
+        let lineLength = line.txt.length
+        console.log(lineLength);
         if (i === meme.selectedLineIdx) {
-            gCtx.strokeRect(line.pos.x - 5, line.pos.y - line.size * 1.4, line.size * 10, line.size * 2)
+            gCtx.strokeRect(line.pos.x - 3, line.pos.y - line.size * 1, 13 + 17 * lineLength, line.size * 1.4)
         }
     }
 }
@@ -191,13 +181,11 @@ function onSwitchLine() {
 }
 
 function onChangeX(val) {
-    console.log('val: ', val)
     changeX(val)
     drawCanvas()
 }
 
 function onChangeY(val) {
-    console.log('val: ', val)
     changeY(val)
     drawCanvas()
 }
@@ -213,7 +201,6 @@ function onAddNewLine() {
 }
 
 function addListeners() {
-    console.log('addListenrs');
     addMouseListeners()
     addTouchListeners()
 }
@@ -227,7 +214,6 @@ function resizeCanvas() {
 
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
-    console.log('addListenrsMousse');
     gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mouseup', onUp)
 }
@@ -240,10 +226,10 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
+    console.log(pos);
     if (!isLineClicked(pos)) {
-        gMeme.selectedLineIdx = 5
-        console.log('down');
-        cleanSelected()
+        gMeme.selectedLineIdx = 0
+
         return
     }
     renderMeme()
@@ -260,17 +246,17 @@ function onMove(ev) {
     const pos = getEvPos(ev)
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
-    console.log('dx: ', dx)
     moveLine(dx, dy)
     gStartPos = pos
     renderMeme()
 }
 
-function onUp() {
-    console.log('Up')
+function onUp(ev) {
+    const pos = getEvPos(ev)
     setLineDrag(false)
     document.body.style.cursor = 'default'
     renderMeme()
+    if (!isLineClicked(pos)) cleanSelected()
 }
 
 
@@ -288,7 +274,7 @@ function onLoadSavedMeme(idx) {
     createCanvas()
     loadSavedMeme(idx)
     renderMeme()
-    
+
 }
 
 function onDeleteSavedMeme(idx) {
@@ -297,7 +283,6 @@ function onDeleteSavedMeme(idx) {
 }
 
 function onAddEmoji(elEmoji) {
-    console.log(elEmoji.dataset.emoji)
     let emojiName = elEmoji.dataset.emoji
     addNewEmoji(emojiName)
     drawCanvas()
@@ -310,8 +295,10 @@ function onSetLang(lang) {
     doTrans()
 }
 
-function cleanSelected(){
+function cleanSelected() {
     gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height)
     let meme = getMeme()
     meme.lines.forEach(line => drawTxt(line))
 }
+
+

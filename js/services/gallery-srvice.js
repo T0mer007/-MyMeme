@@ -46,10 +46,3 @@ function getImages() {
     return gImgs
 }
 
-// function getImgById(id) {
-//     let imgIdx = gImgs.find(img =>{
-//         return img.id === id
-//     });
-//     console.log(imgIdx)
-//     saveToStorage('img', imgIdx)
-// }

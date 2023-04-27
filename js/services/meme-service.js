@@ -13,7 +13,7 @@ let gMeme = {
             align: 'left',
             color: 'white',
             pos: {
-                x:5,
+                x: 5,
                 y: 80
             },
             fontFamily: "Impact",
@@ -44,35 +44,32 @@ function getEvPos(ev) {
     if (TOUCH_EVS.includes(ev.type)) {
         ev.preventDefault()
         ev = ev.changedTouches[0]
-        // console.log('ev.pageX:', ev.pageX)
-        // console.log('ev.pageY:', ev.pageY)
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
         }
-        // console.log('pos:', pos)
     }
     return pos
 }
 
 function moveLine(dx, dy) {
-    console.log('dx:', dx)
-    console.log('dy:', dy)
     gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
     gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
 }
 
 function isLineClicked(clickedPos) {
     const { x, y } = clickedPos
-    for (let i = 0; i <= gMeme.lines.length; i++) {
+    for (let i = 0; i <= gMeme.lines.length - 1; i++) {
         let line = gMeme.lines[i]
-        const distance = { x: line.size*10 , y: line.size }
+        let lineLength = line.txt.length
+        const distance = { x: 20 + lineLength * 16, y: line.size * 1.1 }
         const { pos } = gMeme.lines[i]
-        if (x > pos.x && x < (pos.x + distance.x) && y > pos.y-line.size*2 && (y < pos.y + distance.y)) {
+        if (x > pos.x && x < (pos.x + distance.x) && y > pos.y - distance.y && (y < pos.y + distance.y)) {
             gMeme.selectedLineIdx = i
             return true
         }
     }
+    return false
 }
 
 function setLineDrag(isDrag) {
@@ -145,9 +142,8 @@ function switchLine() {
 }
 
 function createFlexible() {
-    createCanvas()
+    renderEditor()
     const randImgNum = getRandomIntInclusive(1, 20)
-    console.log('randImgNum: ', randImgNum)
     gImg = new Image()
     gImg.src = `imgs/${randImgNum}.jpg`
     const randLinesNum = getRandomIntInclusive(1, 2)
@@ -155,17 +151,11 @@ function createFlexible() {
     for (let i = 1; i <= randLinesNum; i++) {
         randLines.push(createRandomLine())
     }
-
-    gMeme = {
-        selectedImgId: randImgNum,
-        selectedLineIdx: 0,
-        lines: []
-    }
-    gMeme.lines.push(randLines)
-    drawCanvas()
-    gMeme.lines.forEach(line => drawTxt(line))
-
+    gMeme.selectedImgId = randImgNum
+    gMeme.lines = randLines
+    renderMeme()
 }
+
 
 function createRandomLine() {
     const randTxtIdx = getRandomIntInclusive(0, 9)
@@ -192,6 +182,7 @@ function createRandomLine() {
 }
 
 function saveMeme() {
+    gSavedMemes = getSavedMemes()
     gSavedMemes.push(gMeme)
     saveToStorage(STORAGE_KEY, gSavedMemes)
 }
@@ -202,12 +193,11 @@ function loadSavedMeme(idx) {
 }
 
 function deleteSavedMeme(idx) {
-    gSavedMemes.splice(1, idx)
+    gSavedMemes.splice(idx, 1)
     saveToStorage(STORAGE_KEY, gSavedMemes)
 }
 
 function addNewEmoji(emojiName) {
-    console.log(emojiName);
     gMeme.lines.push(createEmoji(emojiName))
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
@@ -216,28 +206,19 @@ function createEmoji(emojiName) {
     let emoji
     switch (emojiName) {
         case 'heart':
-            console.log('heart');
             emoji = '💘'
             break;
         case 'angel':
-
-            console.log('angel');
             emoji = '😇'
             break;
         case 'laugh':
-            console.log('lufff');
             emoji = '🤣'
-
             break;
         case 'sun':
-            console.log('Sun');
             emoji = '😎'
-            
             break;
-            case 'sleep':
+        case 'sleep':
             emoji = '😴'
-
-            console.log('slepp');
             break;
     }
     return {

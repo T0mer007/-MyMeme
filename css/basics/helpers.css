@@ -1,6 +1,6 @@
 /* flex helpers */
 
-.flex{
+.flex {
     display: flex;
 }
 
@@ -8,24 +8,20 @@
     justify-content: space-between;
 }
 
-.flex.align-center{
+.flex.align-center {
     align-items: center;
 }
 
 /* list-helpers */
-.clean-list{
-    margin:0;
+.clean-list {
+    margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
 /* section-helpers */
 
-.colored-section{
+.colored-section {
     background-color: var(--clr1);
 }
 
-
-.hide{
-    display: none;
-}

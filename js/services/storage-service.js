@@ -12,7 +12,7 @@ function loadFromStorage(key) {
 
 function getSavedMemes() {
   gSavedMemes = loadFromStorage(STORAGE_KEY)
-  if (getSavedMemes === null || localStorage.length === 0) {
+  if (gSavedMemes === null || localStorage.length === 0) {
     gSavedMemes = [{
       selectedImgId: 5,
       selectedLineIdx: 0,

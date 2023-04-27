@@ -73,6 +73,7 @@ function onSetImg(img) {
 
 function renderSavedMemes() {
     const memes = getSavedMemes()
+    console.log('memes: ', memes )
     if (memes.legth === 0) return
     let strHtmls = memes.map((meme, idx) => {
         return `
@@ -89,8 +90,8 @@ function renderSavedMemes() {
 
 function searchMeme(val) {
     let input = val
-    if (val=== '') {
-        gImgs.forEach(img => img.class = '' )
+    if (val === '') {
+        gImgs.forEach(img => img.class = '')
         renderGallery()
         document.querySelector('.list').style.display = "none"
         return
@@ -125,16 +126,16 @@ function onLiClick(elLi) {
     document.querySelector('.list').style.display = "none"
 }
 
-function onAbout(){
+function onAbout() {
     document.querySelector('.editor').style.display = 'none'
     document.querySelector('.gallery').style.display = 'none'
-    document.querySelector('.sub-title').innerHTML = `<span data-trans="about">About</span>`
+    document.querySelector('.sub-title').innerHTML = `  <h2 data-trans="about">About</h2>`
     document.querySelector('.about-modal').style.display = 'block'
-    
+
 }
 
-function onGallery(){
-    document.querySelector('.sub-title').innerHTML = `<span data-trans="style">CHOOSE AN IMAGE:</span>`
+function onGallery() {
+    document.querySelector('.sub-title').innerHTML = `  <h2 data-trans="head-line">Choose an image:</h2>`
     document.querySelector('.editor').style.display = 'none'
     document.querySelector('.about-modal').style.display = 'none'
     document.querySelector('.gallery').style.display = 'flex'
@@ -143,3 +144,4 @@ function onGallery(){
 function onOpenMenu() {
     document.querySelector('body').classList.toggle('open-menu')
 }
+

@@ -14,7 +14,7 @@
 
 <body class="main-layout" onload="onInit()">
     <header class="full">
-        <h1 data-trans="title">#MyMeme</h1>
+        <h1 onclick="onGallery()" data-trans="title">#MyMeme</h1>
         <nav class="main-navbar">
             <div class="search-place"></div>
             <button onclick="onGallery()" class="nav-btn">GALLERY</button><button onclick="onAbout()"
@@ -27,7 +27,9 @@
         </nav>
         <button class="menu-btn" onclick="onOpenMenu()"><i class="fa-solid fa-bars"></i></button>
     </header>
-    <h2 class="sub-title" data-trans="head-line">Choose an image:</h2>
+    <div class="sub-title" >
+        <h2 data-trans="head-line">Choose an image:</h2>
+    </div>
 
     <section class="editor flex">
 
