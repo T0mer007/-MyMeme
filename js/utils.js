@@ -21,6 +21,7 @@ function getRandomColor() {
 //Download //
 
 function onDownloadImg(elLink) {
+    cleanSelected()
     const data = gElCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'My-Meme.jpg'
@@ -51,6 +52,7 @@ function renderImg(img) {
 // FACEBOOK //
 
 function onUploadImg() {
+    cleanSelected()
     const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
 
     // A function to be called if request succeeds

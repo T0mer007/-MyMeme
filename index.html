@@ -6,25 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/18eee0c7a5.js" crossorigin="anonymous"></script>
+    <link href="https://kit.fontawesome.com/18eee0c7a5/css/brands.css" rel="stylesheet">
+    <link href="https://kit.fontawesome.com/18eee0c7a5/css/solid.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title data-trans="title">#MyMeme</title>
 </head>
 
 <body class="main-layout" onload="onInit()">
-    <header>
+    <header class="full">
         <h1 data-trans="title">#MyMeme</h1>
-        <select name="lang" onchange="onSetLang(value)" class="lang">
-            <option value="en">EN</option>
-            <option value="es">ES</option>
-            <option value="he">HE</option>
-        </select>
-        <h2 data-trans="head-line">Choose an image:</h2>
+        <nav class="main-navbar">
+            <div class="search-place"></div>
+            <button onclick="onGallery()" class="nav-btn">GALLERY</button><button onclick="onAbout()"
+                class="nav-btn">ABOUT</button>
+            <select name="lang" onchange="onSetLang(value)" class="lang">
+                <option class="lang-opt" value="en">EN</option>
+                <option class="lang-opt" value="es">ES</option>
+                <option class="lang-opt" value="he">HE</option>
+            </select>
+        </nav>
     </header>
+    <h2 class="sub-title" data-trans="head-line">Choose an image:</h2>
 
     <section class="editor flex">
 
-        </section>
-        <!-- Editor Render Here -->
+    </section>
+    <!-- Editor Render Here -->
 
     </section>
 
@@ -37,9 +44,26 @@
         <!-- Image Render Here -->
     </section>
 
+    <section class="AboutSection">
+        <div class="about-modal">
+            <h2>Sprint 2</h2>
+            <p>This sprint was amazing. I didnt eat AL-Ha-ESH I was home when everybody was celebrating yom ha-azmaut. I
+                had so much fun that my back hurts. thanks for every thing.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus hendrerit neque tincidunt faucibus.
+                Mauris metus felis, iaculis dignissim finibus at, congue a sem. Suspendisse potenti. Ut ullamcorper
+                massa est. Duis semper felis tellus, sed suscipit enim hendrerit non. Maecenas at placerat urna, eget
+                pharetra odio. Cras finibus lectus eu nunc iaculis sodales.</p>
+            <p>Quisque vitae placerat neque. Vivamus imperdiet, nunc ac dapibus commodo, risus libero pulvinar ex,
+                tincidunt pellentesque mauris lectus ac sapien. Aenean aliquet pellentesque nunc sit amet auctor. Nullam
+                condimentum diam risus, eget sagittis diam rutrum non. Integer dapibus, tortor sit amet viverra sodales,
+                tortor neque luctus odio, at tincidunt libero dui nec nisi. Maecenas mattis condimentum felis, at
+                tincidunt neque porttitor ut. Aliquam posuere felis sapien, non bibendum tortor posuere eu.</p>
+        </div>
+        <!-- About page Render Here -->
+    </section>
 
 
-    <footer>
+    <footer class="full">
         <p data-trans="copyrights" class="footer-copyright">© tomer benaim</p>
     </footer>
 

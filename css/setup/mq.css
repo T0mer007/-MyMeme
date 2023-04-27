@@ -47,21 +47,21 @@
 
 @media (min-width: 700px) {
     :root {
-        --layout-padding: 60px;
+        --layout-padding: 30px;
     }
 
 }
 
 @media (min-width: 960px) {
     :root {
-        --layout-padding: 130px;
+        --layout-padding: 70px;
     }
 
 }
 
 @media (min-width: 1260px) {
     :root {
-        --layout-padding: 260px;
+        --layout-padding: 180px;
     }
 
     .editor {

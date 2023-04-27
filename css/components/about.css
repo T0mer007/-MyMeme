@@ -1,0 +1,17 @@
+
+.AboutSection{
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: center;
+
+}
+
+.about-modal{
+    height: 80vh;
+    width: 60vw;
+    text-align: center;
+    background-color: #dec1c1;
+    border-radius: 2em;
+    border: 4px solid rgba(200, 200, 200, 0.792);
+    display: none;
+}

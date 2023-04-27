@@ -7,7 +7,7 @@ let gStartPos
 
 
 function renderEditor() {
-    document.querySelector('header h2').innerHTML = `<span data-trans="style">Style & share</span>`
+    document.querySelector('.sub-title').innerHTML = `<span data-trans="style">Style & share</span>`
     const meme = getMeme()
     const currLine = meme.lines[meme.selectedLineIdx]
 
@@ -18,83 +18,82 @@ function renderEditor() {
         </div>
         <section class="control-section">
             <h2 class="control-title" data-trans="controls">Controls</h2>
-            <div class="form-group">
-                <div class="input-group mb-3">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="upload"
-                            onchange="onImgInput(event)">
-                        <label class="upload-btn" for="upload"></label>
-                    </div>
-                </div>
+            
+            
+                            
+            
+            
+            
+            <div class="control-text">
+            
+            <button class="line-delete" onclick="onDeleteText()"><i class="fas trash fa-trash-alt"></i></button>
+            <input class="btn text-input" type="text" placeholder="${currLine.txt}" oninput="onChageTxt(value)" />
+            <button class="btn" onclick="onAddNewLine()"><i class="fa-solid fa-plus"></i></button>
             </div>
-            <div class="control-tools">
-
-
-
-
-                <div class="control-text">
-                    <button class="line-delete" onclick="onDeleteText()"><i class="fas trash fa-trash-alt"></i></button>
-
-                    <input class="text-input" type="text" placeholder="${currLine.txt}" oninput="onChageTxt(value)" />
-
-                    <i class="fas fa-text-height"></i>
-
-                    <input type="range" value="${currLine.size}" min="10" step="2" oninput="onChangeSize(value)">
-
-                    <i class="fas fa-font"></i>:
-                    <input type="color" class="color-input" value="${currLine.color}" oninput="onChangeColor(value)">
-
-
-                    <select oninput="onChangeFont(value)">
-                        <option data-trans="font" style="font-family: Impact;" value="${currLine.fontFamily}">
+                            
+                            <div class="tools-section">
+                            <i class="fas fa-text-height"></i>
+                            <input type="range" value="${currLine.size}" min="10" step="2" oninput="onChangeSize(value)">
+                            
+                            <i class="fas fa-font"></i>:
+                            <input type="color" class="color-input" value="${currLine.color}" oninput="onChangeColor(value)">
+                            
+                            
+                            <select oninput="onChangeFont(value)">
+                            <option data-trans="font" style="font-family: Impact;" value="${currLine.fontFamily}">
                             Font</option>
-                        <option style="font-family: Tahoma;" value="Tahoma">Tahoma</option>
-                        <option style="font-family: lobster;" value="lobster">Lobster</option>
-                        <option value="Verdana">Verdana</option>
-                    </select>
-
-                    <button class="switch-line" data-trans="switch-line" onclick="onSwitchLine()">switch-line</button>
-
-                    <i class="fas fa-arrows-alt-h"></i>
-                    <input type="number" class="left-right-input" value="${currLine.pos.x}" min="0" step="5"
-                        oninput="onChangeX(value)">
-
-                    <i class="fas fa-arrows-alt-v"></i> <input type="number" class="left-right-input" value="${currLine.pos.y}"
-                        min="0" step="5" oninput="onChangeY(value)">
-
-                    <select oninput="onChangeAlign(value)">
-                        <option data-trans="left" value="left">left</option>
-                        <option data-trans="center" value="center">center</option>
-                        <option data-trans="right" value="right">right</option>
-                    </select>
-
-                </div>
-
-                <!-- Tools Render Here -->
-
-
-
-            </div>
-            <div class="emoji">
-                <button class="btn" data-emoji="heart" onclick="onAddEmoji(this)">💘</button>
-                <button data-emoji="angel" onclick="onAddEmoji(this)" class="btn">😇</button>
-                <button data-emoji="laugh" onclick="onAddEmoji(this)" class="btn">🤣</button>
-                <button data-emoji="sun" onclick="onAddEmoji(this)" class="btn">😎</button>
-                <button data-emoji="sleep" onclick="onAddEmoji(this)" class="btn">😴</button>
-            </div>
-
-            <button class="btn" data-trans="add-line" onclick="onAddNewLine()">Add New Line <i class="fas fa-grip-lines"></i></button>
-
-            <button class="btn"  data-trans="flexible" onclick="onFlexible()">I'm flexible</button>
-
-            <button class="btn" data-trans="save" onclick="onSaveMeme()">Save Meme </button>
-
-            <a class="btn" data-trans="download" onclick="onDownloadImg(this)" href="" >Download Image<i class="fas fa-cloud-download-alt"></i> </a>
-
-            <button class="btn fb-share-btn" data-trans="share" onclick="onUploadImg()" type="submit">Share on Facebook <i class="fab fa-facebook-square"></i></button>
-        `
+                            <option style="font-family: Tahoma;" value="Tahoma">Tahoma</option>
+                            <option style="font-family: lobster;" value="lobster">Lobster</option>
+                            <option value="Verdana">Verdana</option>
+                            </select>
+                            
+                            <button class="switch-line btn" onclick="onSwitchLine()"><i class="fa-solid fa-repeat"></i></button>
+                            
+                            <i class="fas fa-arrows-alt-h"></i>
+                            <input type="number" class="left-right-input" value="${currLine.pos.x}" min="0" step="5"
+                            oninput="onChangeX(value)">
+                            
+                            <i class="fas fa-arrows-alt-v"></i> <input type="number" class="left-right-input" value="${currLine.pos.y}"
+                            min="0" step="5" oninput="onChangeY(value)">
+                            
+                            <select oninput="onChangeAlign(value)">
+                            <option data-trans="left" value="left">left</option>
+                            <option data-trans="center" value="center">center</option>
+                            <option data-trans="right" value="right">right</option>
+                            </select>
+                            
+                            </div>
+                            </div>
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <div class="emoji">
+                            <button class="btn emoji-btn" data-emoji="heart" onclick="onAddEmoji(this)">💘</button>
+                            <button data-emoji="angel" onclick="onAddEmoji(this)" class="btn emoji-btn">😇</button>
+                            <button data-emoji="laugh" onclick="onAddEmoji(this)" class="btn emoji-btn">🤣</button>
+                            <button data-emoji="sun" onclick="onAddEmoji(this)" class="btn emoji-btn">😎</button>
+                            <button data-emoji="sleep" onclick="onAddEmoji(this)" class="btn emoji-btn">😴</button>
+                            </div>
+                            <div>
+                            <button class="flexible btn"  data-trans="flexible" onclick="onFlexible()">I'm flexible</button>
+                            </div>
+                            <div class="tools-section share-section">
+                        <input type="file" class="custom-file-input" id="upload"
+                         onchange="onImgInput(event)">
+                        <label class="upload-btn share-btn btn" for="upload"></label>
+                        <button class="btn share-btn" data-trans="save" onclick="onSaveMeme()">Save Meme <i class="fa-regular fa-floppy-disk"></i></button>
+                        <a class="btn share-btn" data-trans="download" onclick="onDownloadImg(this)" href="" >Download <i class="fas fa-cloud-download-alt"></i> </a>
+                        <button class="btn  share-btn" data-trans="share" onclick="onUploadImg()" type="submit">Share <i class="fab fa-facebook-square"></i></button>
+                        </div>
+                        </section>
+                        `
     document.querySelector('.editor').innerHTML = strHtmls
-    // renderControls()
+
     createCanvas()
 }
 
@@ -109,9 +108,9 @@ function renderControls() {
     let memes = getMeme()
     let strHtml = memes.txts.map(() => {
         return `
-
-
-`
+        
+        
+        `
     })
     document.querySelector('.control-tools').innerHTML = strHtml.join('')
 }
@@ -214,6 +213,7 @@ function onAddNewLine() {
 }
 
 function addListeners() {
+    console.log('addListenrs');
     addMouseListeners()
     addTouchListeners()
 }
@@ -227,6 +227,7 @@ function resizeCanvas() {
 
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
+    console.log('addListenrsMousse');
     gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mouseup', onUp)
 }
@@ -239,12 +240,18 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    if (!isLineClicked(pos)) return
+    if (!isLineClicked(pos)) {
+        gMeme.selectedLineIdx = 5
+        console.log('down');
+        cleanSelected()
+        return
+    }
     renderMeme()
     setLineDrag(true)
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
 }
+
 
 function onMove(ev) {
     const meme = getMeme()
@@ -272,6 +279,7 @@ function onFlexible() {
 }
 
 function onSaveMeme() {
+    cleanSelected()
     saveMeme()
     renderSavedMemes()
 }
@@ -280,6 +288,7 @@ function onLoadSavedMeme(idx) {
     createCanvas()
     loadSavedMeme(idx)
     renderMeme()
+    
 }
 
 function onDeleteSavedMeme(idx) {
@@ -301,3 +310,8 @@ function onSetLang(lang) {
     doTrans()
 }
 
+function cleanSelected(){
+    gCtx.drawImage(gImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    let meme = getMeme()
+    meme.lines.forEach(line => drawTxt(line))
+}

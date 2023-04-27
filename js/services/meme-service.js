@@ -99,12 +99,6 @@ function getMeme() {
     return gMeme
 }
 
-function setImg(img) {
-    document.querySelector('.gallery').style.display = 'none'
-    gMeme.selectedImgId = getImgId(img)
-    renderEditor()
-    renderMeme()
-}
 
 function setLineTxt(val) {
     //Idx

@@ -77,6 +77,11 @@ var gTrans = {
         es: 'derecha',
         he: 'ימין',
     },
+    about: {
+        en: 'About',
+        es: 'Acerca De',
+        he: 'כמה מילים',
+    },
 
 }
 

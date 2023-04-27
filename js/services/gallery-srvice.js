@@ -37,7 +37,8 @@ function createImg(url, keyword, description) {
         id: gId++,
         url: url,
         keywords: keyword,
-        description: description
+        description: description,
+        class: ''
     }
 }
 

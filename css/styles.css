@@ -7,14 +7,16 @@
 /* COMPONENTS */
 
 @import url(components/header.css);
+@import url(components/navbar.css);
 @import url(components/logo.css);
 @import url(components/control-section.css);
 @import url(components/gallery.css);
 @import url(components/canvas.css);
+@import url(components/about.css);
 @import url(components/footer.css);
 
 /* SETUP */
 
-@import url(setup/vars.css);
 @import url(setup/typography.css);
+@import url(setup/vars.css);
 @import url(setup/mq.css);

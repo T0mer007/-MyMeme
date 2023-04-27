@@ -3,7 +3,7 @@
 }
 
 html {
-    font-family: 'oswald', monospace;
+    font-family: 'poppins', monospace;
     line-height: 1.742857;
 }
 
@@ -11,6 +11,7 @@ body {
     margin: 0;
     font-size: 0.875rem;
     background-color: #e3e2e2;
+    
 }
 
 h1,
