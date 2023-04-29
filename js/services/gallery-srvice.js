@@ -4,9 +4,6 @@ let gImgs
 let gId = 1
 let gKeywordSearchCountMap = {'funny': 12,'cat': 16, 'baby': 2}
 
-
-
-
 function createImgs() {
     gImgs = [
         createImg('imgs/1.jpg', ['Succes'], 'Proud child'),
@@ -29,6 +26,7 @@ function createImgs() {
         createImg('imgs/18.jpg', ['Political'], 'Putin'),
         createImg('imgs/19.jpg', ['Weird'], 'Look!'),
         createImg('imgs/20.jpg', ['Adorable'], 'Yoga dog'),
+        createImg('imgs/upload.png', ['upload'], 'Upload'),
     ]
 }
 

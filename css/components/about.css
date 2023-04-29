@@ -3,12 +3,13 @@
     grid-column: 2;
     grid-row: 3;
     justify-self: center;
+    margin-bottom: 20px;
 
 }
 
 .about-modal{
-    height: 80vh;
-    width: 60vw;
+    height: 100%;
+    width: 80vw;
     text-align: center;
     background-color: #dec1c1;
     border-radius: 2em;

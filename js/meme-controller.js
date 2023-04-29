@@ -5,13 +5,10 @@ let gCtx
 let gImg
 let gStartPos
 
-
 function renderEditor() {
     document.querySelector('.sub-title').innerHTML = `<span data-trans="style">Style & share</span>`
     const meme = getMeme()
     const currLine = meme.lines[meme.selectedLineIdx]
-
-
     let strHtmls = `
         <div class="canvas-container">
             <canvas class="my-canvas" width="500" height="500"></canvas>
@@ -67,7 +64,7 @@ function renderEditor() {
                             <button data-emoji="sun" onclick="onAddEmoji(this)" class="btn emoji-btn">😎</button>
                             <button data-emoji="sleep" onclick="onAddEmoji(this)" class="btn emoji-btn">😴</button>
                             </div>
-                            <div>
+                            <div class="flexible-container">
                             <button class="flexible btn"  data-trans="flexible" onclick="onFlexible()">I'm flexible</button>
                             </div>
                             <div class="tools-section share-section">
@@ -76,12 +73,11 @@ function renderEditor() {
                         <label class="upload-btn share-btn btn" for="upload">Upload Image ⇑</label>
                         <button class="btn share-btn" data-trans="save" onclick="onSaveMeme()">Save Meme <i class="fa-regular fa-floppy-disk"></i></button>
                         <a class="btn share-btn" data-trans="download" onclick="onDownloadImg(this)" href="" >Download <i class="fas fa-cloud-download-alt"></i> </a>
-                        <button class="btn  share-btn" data-trans="share" onclick="onUploadImg()" type="submit">Share <i class="fab fa-facebook-square"></i></button>
+                        <button class="btn btn-face share-btn" data-trans="share" onclick="onUploadImg()" type="submit">Share <i class="fab fa-facebook-square"></i></button>
                         </div>
                         </section>
                         `
     document.querySelector('.editor').innerHTML = strHtmls
-
     createCanvas()
 }
 
@@ -92,28 +88,15 @@ function renderMeme() {
     addListeners()
 }
 
-function renderControls() {
-    let memes = getMeme()
-    let strHtml = memes.txts.map(() => {
-        return `
-        
-        
-        `
-    })
-    document.querySelector('.control-tools').innerHTML = strHtml.join('')
-}
-
 function loadImg() {
     gImg = new Image()
     if (!gUploadSrc) gImg.src = `imgs/${gMeme.selectedImgId}.jpg`
     else gImg.src = gUploadSrc
 }
 
-
 function createCanvas() {
     gElCanvas = document.querySelector('.my-canvas')
     gCtx = gElCanvas.getContext('2d')
-
 }
 
 function drawCanvas() {
@@ -128,24 +111,20 @@ function markSelected() {
     for (let i = 0; i < meme.lines.length; i++) {
         let line = meme.lines[i]
         let lineLength = line.txt.length
-        console.log(lineLength);
         if (i === meme.selectedLineIdx) {
-            gCtx.strokeRect(line.pos.x - 3, line.pos.y - line.size * 1, 13 + 17 * lineLength, line.size * 1.4)
+            let text = gCtx.measureText(line.txt)
+            gCtx.strokeRect(line.pos.x - 6, line.pos.y - line.size * 1, text.width + line.size + lineLength + 3, line.size * 1.4)
         }
     }
 }
 
 function drawTxt(line) {
-
     gCtx.beginPath()
     gCtx.fillStyle = line.color
     gCtx.strokeStyle = 'black'
     gCtx.lineWidth = 3
     gCtx.font = line.size + 'px ' + line.fontFamily
     gCtx.textAlign = line.align
-
-    // console.log('line: ', line)
-
     gCtx.fillText(line.txt, line.pos.x, line.pos.y)
     gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
 }
@@ -211,7 +190,6 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight
 }
 
-
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
     gElCanvas.addEventListener('mousemove', onMove)
@@ -226,10 +204,8 @@ function addTouchListeners() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    console.log(pos);
     if (!isLineClicked(pos)) {
         gMeme.selectedLineIdx = 0
-
         return
     }
     renderMeme()
@@ -237,7 +213,6 @@ function onDown(ev) {
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
 }
-
 
 function onMove(ev) {
     const meme = getMeme()
@@ -258,7 +233,6 @@ function onUp(ev) {
     renderMeme()
     if (!isLineClicked(pos)) cleanSelected()
 }
-
 
 function onFlexible() {
     createFlexible()
@@ -293,6 +267,7 @@ function onSetLang(lang) {
     if (lang === 'he') document.body.classList.add('rtl')
     else document.body.classList.remove('rtl')
     doTrans()
+    onCloseMenu()
 }
 
 function cleanSelected() {

@@ -1,8 +1,6 @@
 'use strict'
 
-
 let gUploadSrc
-
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)
@@ -59,7 +57,6 @@ function onUploadImg() {
     function onSuccess(uploadedImgUrl) {
         // Encode the instance of certain characters in the url
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        console.log(encodedUploadedImgUrl)
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
     }
     // Send the image to the server

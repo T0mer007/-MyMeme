@@ -1,8 +1,5 @@
 'use strict'
 
-
-
-
 function onInit() {
     createImgs()
     renderGallery()
@@ -11,7 +8,6 @@ function onInit() {
         renderMeme()
     })
 }
-
 
 function renderGallery() {
     let imgs = getImages()
@@ -23,6 +19,7 @@ function renderGallery() {
             </div>
             `
     })
+    
     document.querySelector('.gallery').innerHTML = strHtmls.join('')
 }
 
@@ -61,19 +58,22 @@ function getImgId(elImg) {
 }
 
 function onSetImg(img) {
+    let imgId = getImgId(img)
     document.querySelector('.editor').style.display = 'flex'
     document.querySelector('.gallery').style.display = 'none'
-    gMeme.selectedImgId = getImgId(img)
+    gMeme.selectedImgId = imgId
     renderEditor()
     renderMeme()
     document.querySelector('.search-bar').value = ''
     document.querySelector('.list').style.display = "none"
+    document.querySelector('.savedMemes').style.display = "none"
+    onCloseMenu()
 }
 
 
 function renderSavedMemes() {
+     document.querySelector('.savedMemes').style.display = 'flex'
     const memes = getSavedMemes()
-    console.log('memes: ', memes )
     if (memes.legth === 0) return
     let strHtmls = memes.map((meme, idx) => {
         return `
@@ -117,10 +117,8 @@ function searchMeme(val) {
     renderGallery()
 }
 
-
 function onLiClick(elLi) {
     let val = elLi.dataset.name
-    console.log('val: ', val)
     document.querySelector('.search-bar').value = val
     searchMeme(val)
     document.querySelector('.list').style.display = "none"
@@ -131,7 +129,9 @@ function onAbout() {
     document.querySelector('.gallery').style.display = 'none'
     document.querySelector('.sub-title').innerHTML = `  <h2 data-trans="about">About</h2>`
     document.querySelector('.about-modal').style.display = 'block'
-
+    document.querySelector('.savedMemes').style.display = 'none'
+    onCloseMenu()
+    doTrans()
 }
 
 function onGallery() {
@@ -139,9 +139,14 @@ function onGallery() {
     document.querySelector('.editor').style.display = 'none'
     document.querySelector('.about-modal').style.display = 'none'
     document.querySelector('.gallery').style.display = 'flex'
+    onCloseMenu()
+    doTrans()
 }
 
 function onOpenMenu() {
     document.querySelector('body').classList.toggle('open-menu')
 }
 
+function onCloseMenu() {
+    document.querySelector('body').classList.remove('open-menu')
+}

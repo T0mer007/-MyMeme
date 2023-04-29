@@ -6,25 +6,80 @@
     :root {
         --layout-padding: 0px;
     }
+    header{
+        height: 100px;
+    }
+
+    .main-layout{
+        grid-template-rows: 100px 1fr auto;
+        gap: 0px;
+    }
 
     .editor {
         flex-direction: column;
         align-items: start;
         padding: 0;
         width: 300px;
+        gap: 10px;
+        margin-left: 4px;
+    }
 
+    .canvas-container {
+        height: 40vh;
+        /* min-width: none; */
+        width: 350px;
     }
 
     .control-section {
         width: 90vw;
-        padding: 15px 20%;
+        height: 300px;
+        padding: 0;
+    }
+
+
+    .tools-section {
+        height: 90px;
+        width: 100%;
+    }
+
+    .share-section {
+        height: 95px;
+        width: 100%;
+    }
+
+    .control-title {
+        font-size: 1em;
+    }
+
+    .text-input {
+        height: 20px;
+    }
+
+    .control-text {
+        height: 28px;
     }
 
     .canvas-container {
         width: 100vw;
     }
 
-    .main-navbar{
+    .flexible-container {
+        height: 28px;
+    }
+
+    .flexible {
+        height: 25px;
+    }
+    .emoji{
+
+        height: 25px;
+    }
+
+    .emoji-btn{
+        height: 25px;
+    }
+
+    .main-navbar {
         background: #f4f2f2e8;
         position: fixed;
         top: 0;
@@ -37,19 +92,20 @@
         transition: transform 0.6s;
         padding-top: 128px;
     }
-    .nav-btn{
+
+    .nav-btn {
         height: 60px;
         width: 100%;
     }
 
-    .nav-btn::after{
+    .nav-btn::after {
         height: 2px;
         width: 150px;
         right: 50px;
         background: var(--clr2);
         margin-top: 30px;
     }
-    
+
     header input[type=text] {
         background-color: var(--clr1);
         margin-bottom: 30px;
@@ -77,9 +133,8 @@
         gap: 7px
     }
 
-    .main-layout {
-        gap: 0px;
-
+    .btn-face{
+        margin: auto;
     }
 }
 
@@ -95,6 +150,9 @@
         --layout-padding: 70px;
     }
 
+    .about-modal {
+        width: 70vw;
+    }
 }
 
 @media (min-width: 1260px) {
@@ -105,6 +163,10 @@
     .editor {
         display: flex;
         justify-content: space-around;
+    }
+
+    .about-modal {
+        width: 60vw;
     }
 
 }

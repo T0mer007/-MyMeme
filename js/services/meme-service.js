@@ -1,4 +1,5 @@
 'use strict'
+
 const STORAGE_KEY = 'memes-tab'
 let gSavedMemes = []
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
@@ -26,14 +27,13 @@ let gMeme = {
             color: 'pink',
             pos: {
                 x: 60,
-                y: 350
+                y: 320
             },
             fontFamily: "Impact",
             isDrag: false
         }
     ]
 }
-
 
 function getEvPos(ev) {
     let pos = {
@@ -76,7 +76,6 @@ function setLineDrag(isDrag) {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
 
-
 function createLine() {
     return {
         txt: 'New Line',
@@ -95,7 +94,6 @@ function createLine() {
 function getMeme() {
     return gMeme
 }
-
 
 function setLineTxt(val) {
     //Idx
@@ -155,7 +153,6 @@ function createFlexible() {
     gMeme.lines = randLines
     renderMeme()
 }
-
 
 function createRandomLine() {
     const randTxtIdx = getRandomIntInclusive(0, 9)
