@@ -9,12 +9,12 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
-            size: 40,
+            txt: 'I ❣️U',
+            size: 60,
             align: 'left',
             color: 'white',
             pos: {
-                x: 5,
+                x: 15,
                 y: 80
             },
             fontFamily: "Impact",
@@ -26,8 +26,8 @@ let gMeme = {
             align: 'left',
             color: 'pink',
             pos: {
-                x: 60,
-                y: 320
+                x: 120,
+                y: 340
             },
             fontFamily: "Impact",
             isDrag: false

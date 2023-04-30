@@ -23,7 +23,6 @@
 }
 
 .share-section {
-
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -157,4 +156,8 @@ input[type=range]::-webkit-slider-thumb {
 
 .text-input:hover {
     background-color: var(--clr2);
+}
+
+.btn-face {
+    margin: auto;
 }

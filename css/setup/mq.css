@@ -6,12 +6,14 @@
     :root {
         --layout-padding: 0px;
     }
-    header{
+
+    header {
         height: 100px;
+        width: 100%;
     }
 
-    .main-layout{
-        grid-template-rows: 100px 1fr auto;
+    .main-layout {
+        grid-template-rows: 100px 1fr 1fr 1fr;
         gap: 0px;
     }
 
@@ -19,19 +21,18 @@
         flex-direction: column;
         align-items: start;
         padding: 0;
-        width: 300px;
         gap: 10px;
+        /* width: 100%; */
         margin-left: 4px;
     }
 
     .canvas-container {
         height: 40vh;
-        /* min-width: none; */
-        width: 350px;
+        /* width: 350px; */
     }
 
     .control-section {
-        width: 90vw;
+        /* width: 100%; */
         height: 300px;
         padding: 0;
     }
@@ -70,12 +71,13 @@
     .flexible {
         height: 25px;
     }
-    .emoji{
+
+    .emoji {
 
         height: 25px;
     }
 
-    .emoji-btn{
+    .emoji-btn {
         height: 25px;
     }
 
@@ -100,7 +102,7 @@
 
     .nav-btn::after {
         height: 2px;
-        width: 150px;
+        width: 140px;
         right: 50px;
         background: var(--clr2);
         margin-top: 30px;
@@ -109,7 +111,12 @@
     header input[type=text] {
         background-color: var(--clr1);
         margin-bottom: 30px;
-        width: 110px;
+        margin-inline-end: 60px;
+        width: 120px;
+    }
+
+    input[type=text]:focus {
+        width: 55%;
     }
 
     body.open-menu header .main-navbar {
@@ -130,10 +137,11 @@
     }
 
     .gallery {
-        gap: 7px
+        gap: 7px;
+        justify-content: center;
     }
 
-    .btn-face{
+    .btn-face {
         margin: auto;
     }
 }
@@ -162,7 +170,7 @@
 
     .editor {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
     }
 
     .about-modal {

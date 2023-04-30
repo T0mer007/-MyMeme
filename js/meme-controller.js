@@ -113,7 +113,9 @@ function markSelected() {
         let lineLength = line.txt.length
         if (i === meme.selectedLineIdx) {
             let text = gCtx.measureText(line.txt)
-            gCtx.strokeRect(line.pos.x - 6, line.pos.y - line.size * 1, text.width + line.size + lineLength + 3, line.size * 1.4)
+            console.log('line: ', line)
+            console.log('text: ', text)
+            gCtx.strokeRect(line.pos.x - 6, line.pos.y - line.size, (lineLength * line.size/2) + 8 , line.size * 1.4)
         }
     }
 }

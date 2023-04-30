@@ -50,7 +50,7 @@
 }
 
 .search-place {
-    width: 150px;
+    width: 250px;
 }
 
 .search-bar {
@@ -58,16 +58,16 @@
     margin-left: 15%;
     padding: 15px;
     border-radius: 1em;
+    width: 180px;
     border: 1px solid var(--clr2);
 }
 
 .search-bar form {
-    width: 150px;
+    width: 250px;
 }
 
 header input[type=text] {
     font-family: FontAwesome;
-    width: 90px;
     height: 30px;
     color: var(--clr2);
     font-size: 0.75em;

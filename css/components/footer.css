@@ -4,5 +4,6 @@ footer {
     display: grid;
     justify-content: center;
     align-items: end;
+    grid-row:-1;
 }
 
