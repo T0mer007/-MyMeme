@@ -1,9 +1,9 @@
 header {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: 40% 20% 20%;
+    grid-template-rows: 50px 25px 25px;
     grid-row: 1;
-    height: 130px;
+    height: 100px;
     background-color: var(--clr5);
     color: var(--clr2);
     text-align: center;
@@ -13,7 +13,7 @@ header {
 header h1 {
     justify-self: start;
     padding-inline-start: 5%;
-    margin-top: 35px;
+    margin-top: 15px;
     cursor: pointer;
 }
 

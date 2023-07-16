@@ -32,7 +32,7 @@
     }
 
     .control-section {
-        /* width: 100%; */
+        width: 97%;
         height: 300px;
         padding: 0;
     }
@@ -61,7 +61,8 @@
     }
 
     .canvas-container {
-        width: 100vw;
+        width: 98%;
+        margin-bottom: 5px;
     }
 
     .flexible-container {
@@ -90,7 +91,7 @@
         flex-direction: column;
         justify-content: start;
         width: 50%;
-        transform: translateX(100%);
+        transform: translateX(110%);
         transition: transform 0.6s;
         padding-top: 128px;
     }
